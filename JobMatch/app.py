@@ -15,8 +15,9 @@ def index():
 
 # Run at 08:00am (UTC) every 1st day of the month.
 @app.schedule(Cron(0, 8, 1, '*', '?', '*'))
-def scrapeJob():
+def scrapeJob(event, context):
     logging.info("Running Job Scraper")
+    logging.info("event: ", event)
     # job_tiles = ["Machine Learning Engineer", "Data Scientist", "Data Engineer", "Data Analyst", "Software Developer"]
     job_tiles = ["Machine Learning Engineer", "Data Scientist"]
     locations = {"&uule=w+CAIQICIHVG9yb250bw==": "Toronto", "&uule=w+CAIQICIJVmFuY291dmVy": "Vancouver"}
@@ -31,14 +32,14 @@ def scrapeJob():
     es.save_job_to_es(results_pd)
     logging.info("Finished saving jobs to ElasticSearch")
 
-    return 
+    return {"status": "success"}
 
 
-def main():
-    logging.basicConfig(level=logging.INFO)
-    logging.info("Starting JobMatch Lambda Function")
-    scrapeJob()
-    logging.info("Finished JobMatch Lambda Function")
-    return
+# def main():
+#     logging.basicConfig(level=logging.INFO)
+#     logging.info("Starting JobMatch Lambda Function")
+#     scrapeJob()
+#     logging.info("Finished JobMatch Lambda Function")
+#     return
 
-main()
+# main()
