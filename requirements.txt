@@ -23,6 +23,7 @@ httpie==3.2.2
 httpx==0.26.0
 idna==3.6
 importlib-resources==6.1.1
+iniconfig==2.0.0
 inquirer==2.10.1
 isort==5.13.2
 jmespath==1.0.1
@@ -48,6 +49,7 @@ Pygments==2.17.2
 pylint==2.17.1
 pyparsing==3.1.1
 PySocks==1.7.1
+pytest==7.4.4
 python-dateutil==2.8.2
 python-editor==1.0.4
 python-lsp-server==1.7.1
